@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+<meta name="robots" content="noindex">
+<title>Buzzer Round Host</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=JetBrains+Mono:wght@500;700&display=swap">
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <div class="brand"><span class="brand-mark" aria-hidden="true"></span><h1>Buzzer Host</h1></div>
+    <button id="sound" class="ghost" type="button" aria-pressed="true" hidden>Sound on</button>
+  </header>
+
+  <section id="login">
+    <form class="panel" id="loginForm" autocomplete="off">
+      <h2>Host PIN</h2>
+      <p class="hint">Enter the PIN you set as HOST_PIN when you deployed.</p>
+      <label class="sr" for="pin" style="position:absolute;left:-9999px">Host PIN</label>
+      <input id="pin" type="password" autocomplete="off" required>
+      <p class="err" id="loginErr" role="alert" hidden></p>
+      <div class="row"><button class="btn primary" type="submit">Unlock</button></div>
+    </form>
+  </section>
+
+  <section id="console" hidden>
+    <div id="status" class="status" data-s="idle" role="status" aria-live="polite"><span class="dot"></span><span id="statusText">Connecting&hellip;</span></div>
+    <p id="note" class="note" role="alert" hidden></p>
+
+    <div class="panel">
+      <p class="big" id="hostQ">No question yet</p>
+      <p class="hint" id="hostHint">Open buzzers to start question 1.</p>
+      <div class="row">
+        <button id="hOpen" class="btn primary" type="button">Open buzzers for a new question</button>
+        <button id="hClose" class="btn" type="button">Close buzzers</button>
+      </div>
+    </div>
+
+    <div class="panel" id="judge" hidden>
+      <p class="big" id="judgeWho"></p>
+      <div class="field">
+        <label for="pts">Points</label>
+        <input id="pts" type="number" value="10" min="0" step="1" inputmode="numeric">
+      </div>
+      <div class="row">
+        <button id="hCorrect" class="btn good" type="button">Correct, add 10</button>
+        <button id="hWrong" class="btn" type="button">Wrong, reopen for others</button>
+        <button id="hNone" class="btn" type="button">No answer, close</button>
+      </div>
+    </div>
+
+    <div class="panel">
+      <h2>Teams</h2>
+      <ul class="teams" id="hostTeams"></ul>
+      <div class="row"><button id="hReset" class="btn" type="button">Reset scores</button></div>
+    </div>
+
+    <div class="panel">
+      <h2>Link for the team phones</h2>
+      <div class="sharebox">
+        <input id="shareUrl" type="text" readonly aria-label="Link for the team phones">
+        <button id="copy" class="btn" type="button">Copy</button>
+      </div>
+      <p class="hint">Send this link to the teams. They pick a team once and tap to buzz. Do not share this host page.</p>
+    </div>
+  </section>
+</div>
+<script src="/common.js"></script>
+<script src="/host.js"></script>
+</body>
+</html>

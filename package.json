@@ -1,0 +1,12 @@
+{
+  "name": "buzzer-round",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Six-team buzzer round. First tap wins.",
+  "dependencies": {
+    "@upstash/redis": "^1.34.0"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
